@@ -1,0 +1,15 @@
+language: python
+
+python:
+    - "2.7"
+
+install:
+    - "pip install selenium"
+    - "pip install pytest"
+    - "pip install flask"
+
+before_script:
+    - "python src/app.py&"
+
+script:
+    - "python tests/seltest.py"
