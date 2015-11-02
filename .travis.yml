@@ -12,4 +12,4 @@ before_script:
     - "python src/app.py&"
 
 script:
-    - "python tests/seltest.py"
+    - "py.test tests/seltest.py"
