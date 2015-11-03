@@ -10,13 +10,13 @@ install:
     - "pip install jasmine"
 
 before_script:
-    - "export DISPLAY=:99.0"
+    - "export DISPLAY=:99.0" #set up xvfb, req'd for webdriver/firefox
     - "sh -e /etc/init.d/xvfb start"
     - "python src/app.py&"
     - "sleep 3"
 
 script:
-    - "py.test tests/seltest.py"
+    - "py.test tests/seltest.py" # run selenium tests w/ PhantomJS
     - "export SELTEST_BROWSER=Firefox"
-    - "py.test tests/seltest.py"
-    - "jasmine-ci"
+    - "py.test tests/seltest.py" # run selenium tests w/ Firefox
+    - "jasmine-ci -b firefox" # run jasmine test suite (default browser=ff)
