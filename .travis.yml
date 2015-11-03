@@ -9,7 +9,12 @@ install:
     - "pip install flask"
 
 before_script:
+    - "export DISPLAY=:99.0"
+    - "sh -e /etc/init.d/xvfb start"
     - "python src/app.py&"
+    - "sleep 3"
 
 script:
+    - "py.test tests/seltest.py"
+    - "export SELTEST_BROWSER=Firefox"
     - "py.test tests/seltest.py"
